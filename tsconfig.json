@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "lib": ["es6", "es2015", "es2017", "es2019", "dom", "webworker"],
+    "module": "esnext",
+    "moduleResolution": "Node",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "strict": false,
+    "pretty": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "useDefineForClassFields": true,
+    "target": "esnext",
+    "baseUrl": "./src",
+    "paths": {
+      "@assets/*": ["./assets/*"],
+      "@wrappers/*": ["./common/wrappers/*"],
+      "@helpers/*": ["./common/helpers/*"],
+      "@hooks/*": ["./common/hooks/*"],
+      "@modals/*": ["./common/modals/*"],
+      "@context/*": ["./common/context/*"],
+      "@components/*": ["./common/components/*"],
+      "@services/*": ["./common/services/*"],
+      "@constants/*": ["./constants/*"],
+      "@interfaces/*": ["./interfaces/*"],
+      "@store/*": ["./store/*"]
+    }
+  },
+  "exclude": ["node_modules", "build", "scripts", "webpack", "public/lib"]
+}
