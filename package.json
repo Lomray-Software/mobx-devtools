@@ -1,5 +1,5 @@
 {
-  "name": "mobx-devtools",
+  "name": "mobx-store-manager-devtools",
   "version": "0.1.0",
   "private": false,
   "scripts": {
