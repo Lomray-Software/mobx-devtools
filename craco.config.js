@@ -15,6 +15,11 @@ module.exports = {
           ...webpackConfig.optimization,
           runtimeChunk: false,
         },
+        output: {
+          ...webpackConfig.output,
+          filename: '[name].bundle.js',
+          chunkFilename: '[id].chunk.js',
+        },
       };
     },
   },
