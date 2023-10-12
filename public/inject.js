@@ -17,7 +17,11 @@ function injectScript(filePath, tag = 'body') {
 injectScript(chrome.runtime.getURL('content.js'));
 
 document.addEventListener('DEV_ON_CHANGE', (event) => {
-  console.log('- sendMessage DEV_ON_CHANGE -', event);
+  // console.log('- sendMessage DEV_ON_CHANGE -', event);
 
-  chrome.runtime.sendMessage({ state: event.detail });
+  if (!event.detail) {
+    return;
+  }
+
+  chrome.runtime.sendMessage(event.detail);
 });
