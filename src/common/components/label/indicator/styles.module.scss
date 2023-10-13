@@ -1,0 +1,38 @@
+.indicator {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 16px;
+}
+
+.empty {
+  &:after {
+    content: '\25CF';
+  }
+}
+
+.collapsible {
+  border: 1px solid #fff;
+  border-radius: 2px;
+}
+
+.line {
+  background: #fff;
+  border-radius: 4px;
+  height: 1px;
+  position: absolute;
+  width: 60%;
+}
+
+.vertical {
+  transform: rotate(0);
+  transition: 0.3s;
+}
+
+.isOpen {
+  .vertical {
+    transform: rotate(90deg);
+  }
+}

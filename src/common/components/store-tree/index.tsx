@@ -1,31 +1,32 @@
 import type { FC, ReactNode } from 'react';
-import React from 'react';
+import React, { Fragment } from 'react';
 import ComponentTree from '@components/component-tree';
+import Label from '@components/label';
 import type { IStoresState, IComponentStore, TComponentGroupStore } from '@interfaces/store';
+import styles from './styles.module.scss';
 
 interface IStoreTree {
   state?: IStoresState[];
 }
 
-const renderRecursiveTree = (
-  store?: TComponentGroupStore | IComponentStore,
-  depth = 0,
-): ReactNode => {
+const renderRecursiveTree = (store?: TComponentGroupStore | IComponentStore): ReactNode => {
   const restGroupsKeys = Object.keys(store ?? {}).filter(
     (key) => !['componentName', 'stores'].includes(key),
   );
 
   return (
-    <div style={{ marginLeft: depth * 10 }}>
-      {store?.componentName && typeof store.componentName === 'string' && (
-        <ComponentTree componentName={store.componentName} stores={store.stores} />
-      )}
+    <>
+      <div>
+        {store?.componentName && typeof store.componentName === 'string' && (
+          <ComponentTree componentName={store.componentName} stores={store.stores} />
+        )}
+      </div>
 
       {Boolean(restGroupsKeys.length > 0) &&
-        Object.values(restGroupsKeys).map((key) =>
-          renderRecursiveTree(store?.[key] as TComponentGroupStore, depth + 1),
-        )}
-    </div>
+        Object.values(restGroupsKeys).map((key) => (
+          <Fragment key={key}>{renderRecursiveTree(store?.[key] as TComponentGroupStore)}</Fragment>
+        ))}
+    </>
   );
 };
 
@@ -34,13 +35,19 @@ const renderRecursiveTree = (
  * @constructor
  */
 const StoreTree: FC<IStoreTree> = ({ state }) => (
-  <div>
-    {state?.map(({ path, value }) => (
-      <div key={path}>
-        <p>path: {path}</p>
-        <div>{renderRecursiveTree(value as never)}</div>
-      </div>
-    ))}
+  <div className={styles.wrapper}>
+    <ul>
+      {state?.map(({ path, value }) => (
+        <Fragment key={path}>
+          <li>
+            <Label isOpen={null} dataType="string">
+              Path: "{path}"
+            </Label>
+            <div>{renderRecursiveTree(value as never)}</div>
+          </li>
+        </Fragment>
+      ))}
+    </ul>
   </div>
 );
 

@@ -19,8 +19,11 @@
     "mobx": "^6.6.2"
   },
   "dependencies": {
+    "@lomray/client-helpers": "^1.10.1",
+    "classnames": "^2.3.2",
     "deep-object-diff": "^1.1.7",
     "react": "^18.2.0",
+    "react-collapse": "^5.1.1",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -39,6 +42,7 @@
     "@types/lodash": "^4.14.186",
     "@types/node": "^16.18.2",
     "@types/react": "^18.0.24",
+    "@types/react-collapse": "^5.0.2",
     "@types/react-dom": "^18.0.8",
     "craco": "^0.0.3",
     "eslint": "^8.26.0",
