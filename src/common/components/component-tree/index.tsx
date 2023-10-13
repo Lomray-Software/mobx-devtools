@@ -15,7 +15,7 @@ const ComponentTree: FC<IComponentStore> = ({ stores, componentName }) => {
 
   return (
     <li>
-      <Label isOpen={isToggled} dataType={typeof stores} onClick={toggle}>
+      <Label isOpen={!isToggled} dataType={typeof stores} onClick={toggle}>
         Component name: "{componentName}"
       </Label>
 

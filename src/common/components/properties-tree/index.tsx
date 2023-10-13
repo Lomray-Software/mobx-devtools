@@ -49,7 +49,7 @@ const PropertiesTree: FC<IPropertiesTree> = ({ id, properties }) => {
 
   return (
     <li>
-      <Label isOpen={isToggled} dataType="string" onClick={toggle}>
+      <Label isOpen={!isToggled} dataType="string" onClick={toggle}>
         {id}
       </Label>
       <Collapse isOpened={isToggled}>

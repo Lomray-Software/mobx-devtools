@@ -18,7 +18,7 @@ const ObjectTree: FC<IObjectTree> = ({ id, property }) => {
 
   return (
     <>
-      <Label isOpen={isToggled} dataType="object" onClick={toggle}>
+      <Label isOpen={!isToggled} dataType="object" onClick={toggle}>
         {id}
       </Label>
 
