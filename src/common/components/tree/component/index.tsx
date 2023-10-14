@@ -4,9 +4,8 @@ import React from 'react';
 import { ReactComponent as NestedIcon } from '@assets/icons/nested.svg';
 import Collapse from '@components/collapse';
 import Label from '@components/label';
-import PropertiesTree from '@components/properties-tree';
 import type { IComponentStore } from '@interfaces/store';
-import styles from './styles.module.scss';
+import PropertiesTree from '../properties';
 
 interface IComponentTree extends IComponentStore {
   isGrouped?: boolean;
@@ -20,15 +19,15 @@ const ComponentTree: FC<IComponentTree> = ({ stores, componentName, isGrouped })
   const { isToggled, toggle } = useToggle(true);
 
   return (
-    <li>
+    <>
       <Label isOpen={!isToggled} dataType={typeof stores} onClick={toggle}>
         {isGrouped && (
-          <NestedIcon
-            className={styles.nestedIcon}
-            title="This store is nested in the previous one"
-          />
+          <Label.Icon>
+            <NestedIcon title="This store is nested in the previous one" />
+          </Label.Icon>
         )}
-        Component name: "{componentName}"
+        <Label.Title>Component name:</Label.Title>
+        <Label.Value color="green">"{componentName}"</Label.Value>
       </Label>
 
       <Collapse isOpened={isToggled}>
@@ -42,7 +41,7 @@ const ComponentTree: FC<IComponentTree> = ({ stores, componentName, isGrouped })
           </ul>
         ))}
       </Collapse>
-    </li>
+    </>
   );
 };
 

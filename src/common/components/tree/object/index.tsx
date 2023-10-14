@@ -19,7 +19,7 @@ const ObjectTree: FC<IObjectTree> = ({ id, property }) => {
   return (
     <>
       <Label isOpen={!isToggled} dataType="object" onClick={toggle}>
-        {id}
+        <Label.Title>{id}</Label.Title>
       </Label>
 
       <Collapse isOpened={isToggled}>
@@ -28,8 +28,9 @@ const ObjectTree: FC<IObjectTree> = ({ id, property }) => {
             <div>
               {Object.entries(property).map(([key, value]) => (
                 <li key={key}>
-                  <Label isOpen={null} dataType={typeof value}>
-                    {key}: {JSON.stringify(value)}
+                  <Label dataType={typeof value}>
+                    <Label.Title>{key}:</Label.Title>
+                    <Label.Value>{JSON.stringify(value)}</Label.Value>
                   </Label>
                 </li>
               ))}

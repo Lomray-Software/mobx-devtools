@@ -1,0 +1,63 @@
+@import 'src/assets/styles/utils/vars';
+@import 'src/assets/styles/utils/mixins';
+
+.white {
+  color: $white;
+}
+
+.yellow {
+  color: $yellow;
+}
+
+.green {
+  color: $green;
+}
+
+.purple {
+  color: $purple;
+}
+
+.pink {
+  color: $pink;
+}
+
+.blue {
+  color: $blue;
+}
+
+.orange {
+  color: $orange;
+}
+
+.icon {
+  height: 18px;
+  width: 18px;
+
+  &.white {
+    @include svg-colors($white);
+  }
+
+  &.yellow {
+    @include svg-colors($yellow);
+  }
+
+  &.green {
+    @include svg-colors($green);
+  }
+
+  &.purple {
+    @include svg-colors($purple);
+  }
+
+  &.pink {
+    @include svg-colors($pink);
+  }
+
+  &.blue {
+    @include svg-colors($blue);
+  }
+
+  &.orange {
+    @include svg-colors($orange);
+  }
+}

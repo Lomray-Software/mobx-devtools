@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '@components/layout';
 import Placeholder from '@components/placeholder';
-import StoreTree from '@components/store-tree';
+import StoreTree from '@components/tree';
 import type { IEvent } from '@interfaces/event';
 import type { IStoresState } from '@interfaces/store';
 // import mock from './mock';

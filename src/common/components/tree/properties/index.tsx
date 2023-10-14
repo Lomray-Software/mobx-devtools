@@ -4,7 +4,7 @@ import type { FC, ReactNode } from 'react';
 import React from 'react';
 import Collapse from '@components/collapse';
 import Label from '@components/label';
-import ObjectTree from '@components/object-tree';
+import ObjectTree from '../object';
 
 interface IPropertiesTree {
   id: string;
@@ -14,8 +14,9 @@ interface IPropertiesTree {
 const renderProperty = (id: string, property: string | number | null | object): ReactNode => {
   if (_.isNil(property)) {
     return (
-      <Label isOpen={null} dataType={property === null ? 'null' : 'undefined'}>
-        {id}: {JSON.stringify(property)}
+      <Label dataType={property === null ? 'null' : 'undefined'}>
+        <Label.Title>{id}:</Label.Title>
+        <Label.Value>{JSON.stringify(property)}</Label.Value>
       </Label>
     );
   }
@@ -26,15 +27,17 @@ const renderProperty = (id: string, property: string | number | null | object): 
 
     case 'number':
       return (
-        <Label isOpen={null} dataType="number">
-          {id}: {property}
+        <Label dataType="number">
+          <Label.Title>{id}:</Label.Title>
+          <Label.Value>{property}</Label.Value>
         </Label>
       );
 
     default:
       return (
-        <Label isOpen={null} dataType={typeof property}>
-          {id}: {JSON.stringify(property)}
+        <Label dataType={typeof property}>
+          <Label.Title>{id}:</Label.Title>
+          <Label.Value>{JSON.stringify(property)}</Label.Value>
         </Label>
       );
   }
@@ -49,8 +52,8 @@ const PropertiesTree: FC<IPropertiesTree> = ({ id, properties }) => {
 
   return (
     <li>
-      <Label isOpen={!isToggled} dataType="string" onClick={toggle}>
-        {id}
+      <Label isOpen={!isToggled} dataType="object" onClick={toggle}>
+        <Label.Title color="purple">{id}</Label.Title>
       </Label>
       <Collapse isOpened={isToggled}>
         {Object.entries(properties).map(([key, property]) => (

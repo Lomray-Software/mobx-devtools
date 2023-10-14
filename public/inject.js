@@ -23,5 +23,5 @@ document.addEventListener('DEV_ON_CHANGE', (event) => {
     return;
   }
 
-  chrome.runtime.sendMessage(event.detail);
+  chrome?.runtime?.sendMessage?.(event.detail);
 });

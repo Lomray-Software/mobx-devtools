@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import type { FC, ReactNode } from 'react';
 import React, { Fragment } from 'react';
-import ComponentTree from '@components/component-tree';
 import ConditionalWrapper from '@components/conditional-wrapper';
 import Label from '@components/label';
 import type { IStoresState, IComponentStore, TComponentGroupStore } from '@interfaces/store';
+import ComponentTree from './component';
 import styles from './styles.module.scss';
 
 interface IStoreTree {
@@ -26,9 +26,7 @@ const renderRecursiveTree = (
       wrapper={(children) => (
         <ul>
           <div>
-            <div>
-              <li>{children}</li>
-            </div>
+            <div>{children}</div>
           </div>
         </ul>
       )}
@@ -63,8 +61,9 @@ const StoreTree: FC<IStoreTree> = ({ state }) => (
       {state?.map(({ path, value }) => (
         <Fragment key={path}>
           <li>
-            <Label isOpen={null} dataType="string">
-              Path: "{path}"
+            <Label dataType="string">
+              <Label.Title>Path:</Label.Title>
+              <Label.Value>"{path}"</Label.Value>
             </Label>
             <div>{renderRecursiveTree(value as never)}</div>
           </li>

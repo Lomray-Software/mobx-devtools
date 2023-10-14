@@ -1,8 +1,11 @@
+@import 'src/assets/styles/utils/vars';
+
 .indicator {
   align-items: center;
   aspect-ratio: 1 / 1;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
+  min-width: 16px;
   position: relative;
   width: 16px;
 }
@@ -14,12 +17,12 @@
 }
 
 .collapsible {
-  border: 1px solid #fff;
+  border: 1px solid $white;
   border-radius: 2px;
 }
 
 .line {
-  background: #fff;
+  background: $white;
   border-radius: 4px;
   height: 1px;
   position: absolute;

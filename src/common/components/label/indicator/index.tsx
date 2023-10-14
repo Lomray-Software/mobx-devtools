@@ -4,7 +4,7 @@ import React from 'react';
 import styles from './styles.module.scss';
 
 interface IIndicator {
-  isOpen?: boolean | null;
+  isOpen?: boolean;
 }
 
 /**
@@ -12,7 +12,7 @@ interface IIndicator {
  * @constructor
  */
 const Indicator: FC<IIndicator> = ({ isOpen }) => {
-  const isCollapsible = isOpen !== null;
+  const isCollapsible = isOpen !== undefined;
 
   return (
     <div
