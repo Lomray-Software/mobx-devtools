@@ -32,8 +32,8 @@ const dataTypeToString = (dataType: ILabel['dataType']) => {
 const Label: FCC<ILabel> = ({ children, isOpen, dataType, onClick }) => (
   <div className={styles.label} onClick={onClick} role="presentation">
     <Indicator isOpen={isOpen} />
-    <div>
-      <span>{children}</span>
+    <div className={styles.value}>
+      <span className={styles.inner}>{children}</span>
       {Boolean(dataType) && (
         <small>
           <code>{dataTypeToString(dataType)}</code>

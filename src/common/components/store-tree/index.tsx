@@ -1,6 +1,8 @@
+import classNames from 'classnames';
 import type { FC, ReactNode } from 'react';
 import React, { Fragment } from 'react';
 import ComponentTree from '@components/component-tree';
+import ConditionalWrapper from '@components/conditional-wrapper';
 import Label from '@components/label';
 import type { IStoresState, IComponentStore, TComponentGroupStore } from '@interfaces/store';
 import styles from './styles.module.scss';
@@ -9,24 +11,45 @@ interface IStoreTree {
   state?: IStoresState[];
 }
 
-const renderRecursiveTree = (store?: TComponentGroupStore | IComponentStore): ReactNode => {
+const renderRecursiveTree = (
+  store?: TComponentGroupStore | IComponentStore,
+  depth = 1,
+): ReactNode => {
   const restGroupsKeys = Object.keys(store ?? {}).filter(
     (key) => !['componentName', 'stores'].includes(key),
   );
+  const isGrouped = depth > 2;
 
   return (
-    <>
-      <div>
+    <ConditionalWrapper
+      condition={isGrouped}
+      wrapper={(children) => (
+        <ul>
+          <div>
+            <div>
+              <li>{children}</li>
+            </div>
+          </div>
+        </ul>
+      )}
+    >
+      <div className={classNames({ [styles.isGrouped]: isGrouped })}>
         {store?.componentName && typeof store.componentName === 'string' && (
-          <ComponentTree componentName={store.componentName} stores={store.stores} />
+          <ComponentTree
+            componentName={store.componentName}
+            stores={store.stores}
+            isGrouped={isGrouped}
+          />
         )}
       </div>
 
       {Boolean(restGroupsKeys.length > 0) &&
         Object.values(restGroupsKeys).map((key) => (
-          <Fragment key={key}>{renderRecursiveTree(store?.[key] as TComponentGroupStore)}</Fragment>
+          <Fragment key={key}>
+            {renderRecursiveTree(store?.[key] as TComponentGroupStore, depth + 1)}
+          </Fragment>
         ))}
-    </>
+    </ConditionalWrapper>
   );
 };
 
