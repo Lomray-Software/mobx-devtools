@@ -30,7 +30,10 @@
 }
 
 .icon {
+  align-items: center;
+  display: inline-flex;
   height: 18px;
+  justify-content: center;
   width: 18px;
 
   &.white {
