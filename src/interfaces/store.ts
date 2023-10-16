@@ -9,7 +9,4 @@ export type TComponentGroupStore =
       [key: string]: TComponentGroupStore;
     } & IComponentStore);
 
-export interface IStoresState {
-  path: string;
-  value: Record<string, TComponentGroupStore>;
-}
+export type IStoresState = TComponentGroupStore;
