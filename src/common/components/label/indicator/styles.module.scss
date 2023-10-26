@@ -1,0 +1,41 @@
+@import 'src/assets/styles/utils/vars';
+
+.indicator {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 12px;
+  position: relative;
+  width: 12px;
+}
+
+.empty {
+  &:after {
+    content: '\25CF';
+  }
+}
+
+.collapsible {
+  border: 1px solid $white;
+  border-radius: 2px;
+}
+
+.line {
+  background: $white;
+  border-radius: 4px;
+  height: 1px;
+  position: absolute;
+  width: 60%;
+}
+
+.vertical {
+  transform: rotate(0);
+  transition: 0.3s;
+}
+
+.isOpen {
+  .vertical {
+    transform: rotate(90deg);
+  }
+}
