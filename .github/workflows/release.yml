@@ -1,11 +1,11 @@
-name: Build & Publish
+name: Build & Release
 
 on:
   push:
     branches: [ prod, staging ]
 
 jobs:
-  build:
+  build-release:
     runs-on: ubuntu-latest
 
     steps:
