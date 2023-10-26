@@ -1,10 +1,10 @@
 {
-  "name": "mobx-devtools",
-  "version": "0.1.0",
+  "name": "mobx-store-manager-devtools",
+  "version": "0.2.0",
   "private": false,
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "INLINE_RUNTIME_CHUNK=false craco build",
     "test": "craco test",
     "lint:check": "eslint --ext \".ts,.tsx\" \"src/**/*.{ts,tsx,*.ts,*tsx}\"",
     "lint:format": "eslint --fix --ext \".ts,.tsx\" \"src/**/*.{ts,tsx,*.ts,*tsx}\"",
@@ -13,8 +13,17 @@
     "style:format": "stylelint --fix \"src/**/*.{css,scss}\"",
     "prepare": "husky install"
   },
+  "peerDependencies": {
+    "@lomray/react-mobx-manager": ">=1.1.0",
+    "lodash": "^4.17.21",
+    "mobx": "^6.6.2"
+  },
   "dependencies": {
+    "@lomray/client-helpers": "^1.10.1",
+    "classnames": "^2.3.2",
+    "deep-object-diff": "^1.1.7",
     "react": "^18.2.0",
+    "react-collapse": "^5.1.1",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -28,9 +37,12 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/chrome": "^0.0.200",
     "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.186",
     "@types/node": "^16.18.2",
     "@types/react": "^18.0.24",
+    "@types/react-collapse": "^5.0.2",
     "@types/react-dom": "^18.0.8",
     "craco": "^0.0.3",
     "eslint": "^8.26.0",

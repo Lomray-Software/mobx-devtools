@@ -1,0 +1,37 @@
+// $max-height - max-height property value. required
+// parameter to limit text in non-webkit browser.
+// Be careful with overriding properties.
+// Strongly recommended to include this mixin after all properties
+// to prevent overriding of display property:
+// .my block {
+//   display: block;
+//   ...
+//   @include ellipsis(2em, 2);
+// }
+// Example of usage:
+// @include ellipsis(2em, 2);
+@mixin ellipsis($line-height, $line-count: 1) {
+
+    /* autoprefixer: ignore next */
+    -webkit-box-orient: vertical; /* not displayed when autoprefixer enabled on this line */
+
+    // Webkit solution for multiline ellipsis
+    display: -webkit-box;
+    -webkit-line-clamp: $line-count;
+    max-height: $line-height * $line-count;
+    // Fallback for non-webkit browsers.
+    // Fallback does not render ellipsis.
+    overflow: hidden;
+
+    // Solution for Opera
+    -ms-text-overflow: ellipsis;
+    text-overflow: -o-ellipsis-lastline;
+    text-overflow: ellipsis;
+}
+
+
+// Example:
+// .multiline-ellipsis {
+//   width: 30%;
+//   @include ellipsis(2rem, 2);
+// }

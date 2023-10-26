@@ -1,0 +1,31 @@
+@import 'src/assets/styles/utils/vars';
+
+.wrapper {
+  display: flex;
+
+  ul {
+    > div {
+      display: flex;
+      width: 100%;
+    }
+
+    ul {
+      border-left: 1px dashed rgba($white, 0.4);
+      display: block;
+      list-style: none;
+      margin-left: 12px;
+      padding-left: 16px;
+    }
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+
+    > div:first-of-type {
+      padding-left: 6px;
+    }
+  }
+}
