@@ -1,11 +1,12 @@
-import useToggle from '@lomray/client-helpers/hooks/use-toggle';
 import type { FC } from 'react';
 import React from 'react';
 import Collapse from '@components/collapse';
 import Label from '@components/label';
+import { useRouterAnimationContext } from '@context/collapse';
 
 interface IObjectTree {
   id: string;
+  label: string;
   property: object;
 }
 
@@ -13,13 +14,21 @@ interface IObjectTree {
  * ObjectTree
  * @constructor
  */
-const ObjectTree: FC<IObjectTree> = ({ id, property }) => {
-  const { isToggled, toggle } = useToggle(true);
+const ObjectTree: FC<IObjectTree> = ({ id, label, property }) => {
+  const { state, toggle } = useRouterAnimationContext();
+
+  const isToggled = state?.[id] ?? false;
 
   return (
     <>
-      <Label isOpen={!isToggled} dataType="object" onClick={toggle}>
-        <Label.Title>{id}</Label.Title>
+      <Label
+        isOpen={!isToggled}
+        dataType="object"
+        onClick={toggle}
+        data-id={id}
+        data-default-state="false"
+      >
+        <Label.Title>{label}</Label.Title>
       </Label>
 
       <Collapse isOpened={isToggled}>

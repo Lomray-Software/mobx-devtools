@@ -1,4 +1,5 @@
 import type { FCC } from '@lomray/client-helpers/interfaces/fc-with-children';
+import type { MouseEvent } from 'react';
 import React from 'react';
 import Indicator from './indicator';
 import Icon from './inner/icon';
@@ -7,7 +8,7 @@ import Value from './inner/value';
 import styles from './styles.module.scss';
 
 interface ILabel {
-  onClick?: () => void;
+  onClick?: (e: MouseEvent<HTMLDivElement>) => void;
   isOpen?: boolean;
   dataType?: 'array' | 'object' | string;
 }
@@ -42,8 +43,8 @@ const dataTypeToString = (dataType: ILabel['dataType']) => {
  * Label
  * @constructor
  */
-const Label: TLabel = ({ children, isOpen, dataType, onClick }) => (
-  <div className={styles.label} onClick={onClick} role="presentation">
+const Label: TLabel = ({ children, isOpen, dataType, onClick, ...rest }) => (
+  <div className={styles.label} onClick={onClick} role="presentation" {...rest}>
     <Indicator isOpen={isOpen} />
     <div className={styles.body}>
       <span className={styles.inner}>{children}</span>

@@ -1,17 +1,23 @@
-import useToggle from '@lomray/client-helpers/hooks/use-toggle';
 import type { FC } from 'react';
 import React from 'react';
 import Collapse from '@components/collapse';
 import Label from '@components/label';
+import { useRouterAnimationContext } from '@context/collapse';
 import type { IComponentStore } from '@interfaces/store';
 import PropertiesTree from '../properties';
+
+interface IComponentTree extends IComponentStore {
+  id: string;
+}
 
 /**
  * ComponentTree
  * @constructor
  */
-const ComponentTree: FC<IComponentStore> = ({ stores, componentName }) => {
-  const { isToggled, toggle } = useToggle(true);
+const ComponentTree: FC<IComponentTree> = ({ stores, componentName, id }) => {
+  const { state, toggle } = useRouterAnimationContext();
+
+  const isToggled = state?.[id] ?? true;
 
   return (
     <div>
@@ -20,7 +26,13 @@ const ComponentTree: FC<IComponentStore> = ({ stores, componentName }) => {
         <Label.Value color="green">"{componentName}"</Label.Value>
       </Label>
 
-      <Label isOpen={!isToggled} onClick={toggle} dataType="object">
+      <Label
+        isOpen={!isToggled}
+        onClick={toggle}
+        dataType="object"
+        data-id={id}
+        data-default-state="true"
+      >
         <Label.Title>Stores:</Label.Title>
       </Label>
 
@@ -29,7 +41,11 @@ const ComponentTree: FC<IComponentStore> = ({ stores, componentName }) => {
           <div>
             <div>
               {Object.entries(stores).map(([storeId, storeProperties]) => (
-                <PropertiesTree key={storeId} id={storeId} properties={storeProperties} />
+                <PropertiesTree
+                  key={storeId}
+                  id={`${id}--${storeId}`}
+                  properties={storeProperties}
+                />
               ))}
             </div>
           </div>

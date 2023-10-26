@@ -13,7 +13,7 @@ interface IStateTree {
  * @constructor
  */
 const StateTree: FC<IStateTree> = ({ state }) => (
-  <div className={styles.wrapper}>{renderRecursive(state as never)}</div>
+  <div className={styles.wrapper}>{renderRecursive('root', state as never)}</div>
 );
 
 export default StateTree;

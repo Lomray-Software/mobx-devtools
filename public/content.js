@@ -5,7 +5,7 @@ setTimeout(() => {
     return;
   }
 
-  console.log('manager:', manager);
+  // console.log('manager:', manager);
 
   manager.__devOnChange = (detail) => {
     // console.log('- dispatchEvent DEV_ON_CHANGE -');

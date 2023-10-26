@@ -4,7 +4,11 @@ import type { IComponentStore, TComponentGroupStore } from '@interfaces/store';
 import ComponentTree from './component';
 import StoreTree from './store';
 
-const renderRecursive = (store?: TComponentGroupStore | IComponentStore, depth = 1): ReactNode => {
+const renderRecursive = (
+  id: string,
+  store?: TComponentGroupStore | IComponentStore,
+  depth = 1,
+): ReactNode => {
   const restGroupsKeys = Object.keys(store ?? {}).filter(
     (key) => !['componentName', 'stores'].includes(key),
   );
@@ -15,7 +19,11 @@ const renderRecursive = (store?: TComponentGroupStore | IComponentStore, depth =
         <div>
           <div>
             {store?.componentName && typeof store.componentName === 'string' && (
-              <ComponentTree componentName={store.componentName} stores={store.stores} />
+              <ComponentTree
+                id={`${id}--${restGroupsKeys.join('-')}`}
+                componentName={store.componentName}
+                stores={store.stores}
+              />
             )}
           </div>
 
@@ -23,6 +31,7 @@ const renderRecursive = (store?: TComponentGroupStore | IComponentStore, depth =
             Object.values(restGroupsKeys).map((key) => (
               <StoreTree
                 key={key}
+                id={key}
                 group={store?.[key] as TComponentGroupStore}
                 depth={depth + 1}
                 title={key}
