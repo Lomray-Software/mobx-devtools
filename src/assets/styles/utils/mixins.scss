@@ -1,0 +1,25 @@
+/**
+ * Replace svg colors via fill and stroke
+ * Svg will be colored for existing params only
+ */
+@mixin svg-colors($color) {
+  &,
+  svg {
+    transition: 0.3s;
+
+    path,
+    rect,
+    line,
+    circle {
+      transition: 0.3s;
+
+      &[stroke] {
+        stroke: $color;
+      }
+
+      &[fill] {
+        fill: $color;
+      }
+    }
+  }
+}
