@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 import Collapse from '@components/collapse';
 import Label from '@components/label';
+import { renderProperty } from '@components/tree/properties';
 import { useRouterAnimationContext } from '@context/collapse';
 
 interface IObjectTree {
@@ -35,12 +36,13 @@ const ObjectTree: FC<IObjectTree> = ({ id, label, property }) => {
         <ul>
           <div>
             <div>
-              {Object.entries(property).map(([key, value]) => (
+              {Object.entries(property).map(([key, value], index) => (
                 <li key={key}>
-                  <Label dataType={typeof value}>
-                    <Label.Title>{key}:</Label.Title>
-                    <Label.Value>{JSON.stringify(value)}</Label.Value>
-                  </Label>
+                  {renderProperty(
+                    `${id}-${key}-${index}`,
+                    key,
+                    value as string | number | null | object,
+                  )}
                 </li>
               ))}
             </div>

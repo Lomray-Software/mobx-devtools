@@ -11,7 +11,7 @@ interface IPropertiesTree {
   properties: Record<string, string | number | null | object>;
 }
 
-const renderProperty = (
+export const renderProperty = (
   id: string,
   label: string,
   property: string | number | null | object,
