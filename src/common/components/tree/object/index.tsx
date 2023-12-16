@@ -24,7 +24,7 @@ const ObjectTree: FC<IObjectTree> = ({ id, label, property }) => {
     <>
       <Label
         isOpen={!isToggled}
-        dataType="object"
+        dataType={Array.isArray(property) ? 'array' : 'object'}
         onClick={toggle}
         data-id={id}
         data-default-state="false"
