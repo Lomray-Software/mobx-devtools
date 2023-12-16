@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# Mobx devtools extension for [Mobx stores manager](https://github.com/Lomray-Software/react-mobx-manager)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p float="center">
+  <img src="https://github.com/Lomray-Software/mobx-store-manager-devtools/assets/40923851/a90ef563-62d6-4f64-9b29-441b1331e4b4" alt="Mobx devtools extension demo 1" width="300"/>
+  <img src="https://github.com/Lomray-Software/mobx-store-manager-devtools/assets/40923851/557fbbc1-950b-4f53-a345-721da9de2902" alt="Mobx devtools extension demo 2" width="300"/>
+  <img src="https://github.com/Lomray-Software/mobx-store-manager-devtools/assets/40923851/92129a5e-64d9-4ecd-8eef-ade5e7f38e6b" alt="Mobx devtools extension demo 3" width="300"/>
+</p>
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Getting started](#getting-started)
+- [Bugs and feature requests](#bugs-and-feature-requests)
+- [Copyright](#copyright)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting started
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This package is part of the [Mobx stores manager](https://github.com/Lomray-Software/react-mobx-manager)
 
-### `npm test`
+```
+npm i @lomray/react-mobx-manager
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In your `client.ts`:
 
-### `npm run build`
+```jsx
+import connectDevExtension from '@lomray/react-mobx-manager/plugins/dev-extension/index';
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+connectDevExtension(storeManager);
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Bugs and feature requests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Bug or a feature request, [please open a new issue](https://github.com/Lomray-Software/mobx-store-manager-devtools/issues/new).
 
-### `npm run eject`
+## Copyright
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Code and documentation copyright 2022 the [Lomray Software](https://lomray.com/). 
